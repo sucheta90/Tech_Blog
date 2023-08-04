@@ -1,7 +1,25 @@
-<div>
-  {{#each blogs as |blog|}}
-    <h3>{{blog.blog_title}}</h3>
-    <p>{{blog.description}}</p>
-    <p>posted on {{blog.createdAt}}</p>
-  {{/each}}
+<div class="container">
+  <h2>Create a new blog</h2>
+  <form class="blog-post-form">
+    <div class="mb-3">
+      <label for="blog-title" class="form-label">
+        Blog Title
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        id="blog-title"
+        placeholder="name@example.com"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="blog-description" class="form-label">
+        Description
+      </label>
+      <textarea class="form-control" id="blog-description" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary">Post Blog</button>
+  </form>
 </div>
+
+<script src="./js/blogPost.js"></script>

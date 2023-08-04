@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h2>Your Dashboard</h2>
   {{#if blogs}}
     <div class="card">
@@ -16,7 +16,7 @@
     </div>
 
   {{else}}
-    <button>Add New Blog</button>
+    <a href="/blog"> <button class="btn btn-primary">Add New Blog</button></a>
 
   {{/if}}
 </div>

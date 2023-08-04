@@ -6,7 +6,6 @@ async function handleFormSubmission(e) {
 
   //   checking if both fields have been entered and sending a post request
   if (email && password) {
-    console.log("inside email pass check");
     const response = await fetch("/api/user/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),

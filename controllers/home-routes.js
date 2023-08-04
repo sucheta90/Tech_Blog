@@ -63,13 +63,31 @@ router.get("/profile", checkAuth, async (req, res) => {
 
 router.get("/dashboard", checkAuth, async (req, res) => {
   try {
+    const blogData = await Blog.findAll({
+      where: req.session.user_id,
+      attributes: { excludes: ["password"] },
+      include: [{ model: User }],
+    });
+    const blogs = blogData.map((blog) => {
+      return blog.get({ plain: true });
+    });
+    res.render("dashboard", {
+      blogs,
+      loggedIn: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// route to blog.handlebar to show the form that adds a new blog
+router.get("/blog", checkAuth, async (req, res) => {
+  try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { excludes: ["password"] },
       include: [{ model: Blog }],
     });
     const user = userData.get({ plain: true });
-    res.render("dashboard", {
-      ...user,
+    res.render("blog", {
       loggedIn: true,
     });
   } catch (err) {
