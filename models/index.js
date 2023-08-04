@@ -6,6 +6,7 @@ const Blog = require("./Blog");
 Blog.belongsTo(User);
 User.hasMany(Blog);
 
+// Comment has a user
 Comment.belongsTo(User);
 User.hasMany(Comment);
 

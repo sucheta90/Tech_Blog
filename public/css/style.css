@@ -1,0 +1,14 @@
+ul {
+  margin-right: 5em;
+  width: 100%;
+}
+ul li {
+  margin-left: 5em;
+}
+header {
+  margin-bottom: 2em;
+  margin-top: 1.5em;
+}
+h1 {
+  margin-left: 2em;
+}

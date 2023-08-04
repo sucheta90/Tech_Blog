@@ -1,0 +1,22 @@
+<div>
+  <h2>Your Dashboard</h2>
+  {{#if blogs}}
+    <div class="card">
+      {{#each blogs as |blog|}}
+        <div class="card-header d-flex justify-content-around">
+          <h3>{{blog.blog_title}}</h3>
+          <p>posted on {{blog.createdAt}}</p>
+        </div>
+        <div class="card-body">
+          <p>{{blog.description}}</p>
+
+        </div>
+
+      {{/each}}
+    </div>
+
+  {{else}}
+    <button>Add New Blog</button>
+
+  {{/if}}
+</div>
