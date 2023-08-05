@@ -1,15 +1,19 @@
 <div class="card p-2">
   {{#each blogs as |blog|}}
-    <div class="card mb-3">
-      <div class="card-header d-flex justify-content-around">
-        <h3>{{blog.blog_title}}</h3>
-        <p>posted on {{blog.createdAt}}</p>
-      </div>
-      <div class="card-body">
-        <p>{{blog.description}}</p>
+    <a href="">
+      <div class="card mb-3">
+        <div
+          class="card-header d-flex justify-content-around bg-dark text-light"
+        >
+          <h3>{{blog.blog_title}}</h3>
+          <p>posted on {{format_date blog.createdAt}}</p>
+        </div>
+        <div class="card-body">
+          <p>{{blog.description}}</p>
 
+        </div>
       </div>
-    </div>
+    </a>
 
   {{/each}}
 </div>

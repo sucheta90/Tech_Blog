@@ -5,25 +5,50 @@ router.post("/", async (req, res) => {
   try {
     const newBlog = await Blog.create({
       ...req.body,
-      user_id: req.session.user_id,
+      user_name: req.session.userName,
+      owner_id: req.session.user_id,
     });
-    // if (!newBlog) {
-    //   res.status(404).json("something went wrong");
-    //   return;
-    // }
+    newBlog.createdAt = newBlog.createdAt.toLocaleString();
+    newBlog.user_name = req.session.userName;
+    // newBlog.owner_id = req.session.user_id;
+
+    if (!newBlog) {
+      res.status(404).json("something went wrong");
+      return;
+    }
+
     res.status(200).json("success");
   } catch (err) {
     res.status(500).json(err);
   }
-  // res.json(`You have reached the blog post route`);
 });
 
-router.put("/:id", (req, res) => {
-  res.json(`You have reached the blog edit route`);
+router.put("/:id", async (req, res) => {
+  try {
+    const newBlog = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.render("dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  res.json(`You have reached the blog delete route`);
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteBlog = await Blog.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.render("dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

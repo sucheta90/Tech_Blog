@@ -3,20 +3,29 @@
   {{#if blogs}}
     <div class="card">
       {{#each blogs as |blog|}}
-        <div class="card-header d-flex justify-content-around">
-          <h3>{{blog.blog_title}}</h3>
-          <p>posted on {{blog.createdAt}}</p>
-        </div>
-        <div class="card-body">
-          <p>{{blog.description}}</p>
+        {{log this}}
+        <a href="/blog/{{blog.id}}">
+          <div class="card">
+            <div class="card-header d-flex justify-content-around">
+              <h3>{{blog.blog_title}}</h3>
+              <p>posted on
+                {{format_date blog.createdAt}}
 
-        </div>
+              </p>
 
+            </div>
+            <div class="card-body">
+              <p>{{blog.description}}</p>
+
+            </div>
+          </div></a>
       {{/each}}
     </div>
 
-  {{else}}
+  {{/if}}
+  <div class="container">
     <a href="/blog"> <button class="btn btn-primary">Add New Blog</button></a>
 
-  {{/if}}
+  </div>
+
 </div>

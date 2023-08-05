@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Edit Blog</h2>
+  <form class="edit-blog-form">
+    <div class="mb-3">
+      <input type="hidden" id="blog_id" value="{{id}}" />
+      <label for="blog-title" class="form-label">
+        Blog Title
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        id="blog-title"
+        placeholder="name@example.com"
+        value="{{blog_title}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="blog-description" class="form-label">
+        Description
+      </label>
+      <textarea
+        class="form-control"
+        id="blog-description"
+        rows="3"
+      >{{description}}</textarea>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-primary">Update Blog</button>
+    </div>
+  </form>
+</div>
+<div class="d-grid container">
+  <button type="btn" class="btn btn-warning" id="delete-btn">Delete Blog</button>
+</div>
+
+<script src="./../js/editPost.js"></script>

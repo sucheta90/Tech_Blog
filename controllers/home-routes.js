@@ -32,13 +32,13 @@ router.get("/blog/:id", async (req, res) => {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
         {
-          model: [User, Comment],
-          attributes: ["name", { exclude: ["password"] }],
+          model: User,
+          attributes: { exclude: ["password"] },
         },
       ],
     });
     const blog = blogData.get({ plain: true });
-    res.render("blog", { ...blog, loggedIn: req.session.loggedIn });
+    res.render("editBlog", { ...blog, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -64,13 +64,15 @@ router.get("/profile", checkAuth, async (req, res) => {
 router.get("/dashboard", checkAuth, async (req, res) => {
   try {
     const blogData = await Blog.findAll({
-      where: req.session.user_id,
+      where: { owner_id: req.session.user_id },
       attributes: { excludes: ["password"] },
       include: [{ model: User }],
     });
+    console.log(`blogData ${blogData}`);
     const blogs = blogData.map((blog) => {
       return blog.get({ plain: true });
     });
+    console.log(blogs);
     res.render("dashboard", {
       blogs,
       loggedIn: true,

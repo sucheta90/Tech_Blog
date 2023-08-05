@@ -14,7 +14,7 @@ async function handleFormSubmission(e) {
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert(response.statusText);
+      alert(`User doesn't exist!`);
     }
   }
 }
