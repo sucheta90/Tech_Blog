@@ -4,6 +4,8 @@
 
 In the dynamic world of technology, everything is constantly evolving. To stay up-to-date with both new and established technologies, there is no better alternative than a tech blog. This web app is specifically designed to cater to aspiring developers in the tech world, providing a platform where they can share and expand their knowledge.
 
+[The Tech Blog](https://mysterious-chamber-53032-ae84c08c721b.herokuapp.com/)
+
 ## Table of Contents
 
 - [Usage](#usage)
