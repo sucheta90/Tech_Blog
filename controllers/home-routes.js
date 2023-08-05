@@ -47,6 +47,7 @@ router.get("/blog/:id", async (req, res) => {
 // Using the middleware to check auth
 router.get("/profile", checkAuth, async (req, res) => {
   try {
+    console.log("****Inside profile****");
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { excludes: ["password"] },
       include: [{ model: Blog }],
@@ -54,7 +55,7 @@ router.get("/profile", checkAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     res.render("profile", {
       ...user,
-      loggedIn: true,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
